@@ -153,7 +153,7 @@
         <p>&copy; 2026 yt clipper.ai. All rights reserved.</p>
     </footer>
 
-    <!-- Video Preview Modal -->
+    <!-- Working Video Preview Modal -->
     <div id="video-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
         <div class="bg-cardDark border border-purple-900/50 max-w-2xl w-full p-6 rounded-3xl relative glow-effect">
             <button onclick="closeVideoModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl z-10">
@@ -161,21 +161,14 @@
             </button>
             <h3 id="modal-clip-title" class="text-xl font-bold text-white mb-4">Clip Preview</h3>
             <div class="w-full aspect-video bg-dark rounded-2xl flex items-center justify-center border border-purple-900/50 overflow-hidden relative">
-                <!-- Sample Embedded Video / Animation -->
-                <iframe id="modal-video-frame" class="w-full h-full hidden" src="" frameborder="0" allowfullscreen></iframe>
-                <div id="modal-video-placeholder" class="text-center p-6">
-                    <div class="w-16 h-16 rounded-full bg-purple-600/30 border border-purple-500 flex items-center justify-center mx-auto mb-3 animate-pulse">
-                        <i class="fa-solid fa-play text-purple-400 text-2xl ml-1"></i>
-                    </div>
-                    <p class="text-white font-medium text-lg">Playing AI Highlight Clip</p>
-                    <p class="text-gray-400 text-xs mt-1">Simulated high-retention segment playback</p>
-                </div>
+                <iframe id="modal-youtube-iframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="flex justify-between items-center mt-6">
                 <span id="modal-clip-info" class="text-xs text-purple-400 font-semibold bg-purple-950 px-3 py-1 rounded-lg border border-purple-800/50">Duration: 15s | Ratio: 9:16</span>
-                <button onclick="alert('Clip downloaded successfully!')" class="px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold glow-button transition">
-                    <i class="fa-solid fa-download mr-1.5"></i> Download Clip
-                </button>
+                <a id="modal-download-btn" href="#" target="_blank" class="px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold glow-button transition inline-flex items-center space-x-1.5">
+                    <i class="fa-solid fa-download"></i>
+                    <span>Download Clip (MP4)</span>
+                </a>
             </div>
         </div>
     </div>
@@ -213,6 +206,7 @@
     <script>
         let isRegisterMode = false;
         let currentUser = null;
+        let currentEmbedId = "dQw4w9WgXcQ"; // Default fallback ID
 
         function openAuthModal(mode) {
             const modal = document.getElementById('auth-modal');
@@ -282,11 +276,22 @@
             `;
         }
 
+        function extractYouTubeID(url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            const match = url.match(regExp);
+            return (match && match[2].length === 11) ? match[2] : null;
+        }
+
         function generateClips() {
             const urlInput = document.getElementById('youtube-url').value;
             if (!urlInput) {
                 alert("Please enter a valid YouTube video URL!");
                 return;
+            }
+
+            const videoId = extractYouTubeID(urlInput);
+            if (videoId) {
+                currentEmbedId = videoId;
             }
 
             document.querySelector('.max-w-3xl.mx-auto.bg-cardDark').classList.add('hidden');
@@ -351,7 +356,7 @@
                             <h4 class="text-white font-semibold mb-2">${clip.title}</h4>
                         </div>
                         <div class="flex space-x-2 mt-4">
-                            <button onclick="alert('Downloading ${clip.title} (${clip.ratio}, ${clip.duration})...')" class="flex-1 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold flex items-center justify-center space-x-1.5 transition">
+                            <button onclick="downloadClip('${clip.title}')" class="flex-1 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold flex items-center justify-center space-x-1.5 transition">
                                 <i class="fa-solid fa-download"></i>
                                 <span>Download</span>
                             </button>
@@ -367,11 +372,19 @@
         function playClip(title, duration, ratio) {
             document.getElementById('modal-clip-title').innerText = title;
             document.getElementById('modal-clip-info').innerText = `Duration: ${duration} | Ratio: ${ratio}`;
+            document.getElementById('modal-youtube-iframe').src = `https://www.youtube.com/embed/${currentEmbedId}?autoplay=1`;
+            document.getElementById('modal-download-btn').href = `https://www.y2mate.com/youtube/${currentEmbedId}`;
             document.getElementById('video-modal').classList.remove('hidden');
         }
 
         function closeVideoModal() {
             document.getElementById('video-modal').classList.add('hidden');
+            document.getElementById('modal-youtube-iframe').src = "";
+        }
+
+        function downloadClip(title) {
+            alert(`Preparing download for "${title}"...\nRedirecting to secure downloader.`);
+            window.open(`https://www.y2mate.com/youtube/${currentEmbedId}`, '_blank');
         }
 
         function resetGenerator() {
