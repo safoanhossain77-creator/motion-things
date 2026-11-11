@@ -1,397 +1,191 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>yt clipper.ai - Turn Long Videos into Viral Shorts</title>
+    <title>ShopEase - Modern E-Commerce Store</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        dark: '#050508',
-                        cardDark: '#0b0b10',
-                        purplePrimary: '#8b5cf6',
-                        purpleDark: '#7c3aed',
-                        purpleLight: '#a78bfa'
-                    }
-                }
-            }
-        }
-    </script>
-    <!-- FontAwesome Icons -->
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #050508;
-            color: #f3f4f6;
-        }
-        .glow-effect {
-            box-shadow: 0 0 40px -10px rgba(139, 92, 246, 0.3);
-        }
-        .glow-button {
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
-            transition: all 0.3s ease;
-        }
-        .glow-button:hover {
-            box-shadow: 0 0 30px rgba(139, 92, 246, 0.8);
-        }
-    </style>
 </head>
-<body class="min-h-screen flex flex-col selection:bg-purple-500 selection:text-white">
+<body class="bg-gray-50 font-sans">
 
-    <!-- Header / Navbar -->
-    <header class="border-b border-purple-900/30 bg-dark/80 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center glow-button">
-                    <i class="fa-solid fa-wand-magic-sparkles text-white text-lg"></i>
-                </div>
-                <span class="text-2xl font-extrabold tracking-tight text-white">yt clipper<span class="text-purple-400">.ai</span></span>
-            </div>
+    <!-- Top Bar -->
+    <div class="bg-indigo-600 text-white text-xs py-2 px-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <p><i class="fa-solid fa-phone mr-2"></i> +880 1234 567890 | <i class="fa-solid fa-envelope ml-4 mr-2"></i> support@shopease.com</p>
+            <p class="hidden md:block">Free Express Shipping on Orders Over $50!</p>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-black text-indigo-600 tracking-wider">ShopEase</a>
             
-            <div id="nav-auth-area" class="flex items-center space-x-4">
-                <button onclick="openAuthModal('login')" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white transition">Sign In</button>
-                <button onclick="openAuthModal('register')" class="px-5 py-2.5 rounded-xl text-sm font-semibold bg-purple-600 hover:bg-purple-500 text-white glow-button transition">Get Started</button>
+            <!-- Search Bar (Desktop) -->
+            <div class="hidden md:flex items-center w-1/3 bg-gray-100 rounded-full px-4 py-2">
+                <input type="text" placeholder="Search for products..." class="bg-transparent w-full focus:outline-none text-sm">
+                <button class="text-gray-500 hover:text-indigo-600"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+
+            <!-- Nav Icons -->
+            <div class="flex items-center space-x-6 text-gray-700">
+                <a href="#" class="hover:text-indigo-600 relative"><i class="fa-regular fa-heart text-xl"></i><span class="absolute -top-2 -right-2 bg-indigo-600 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">2</span></a>
+                <a href="#" class="hover:text-indigo-600 relative"><i class="fa-solid fa-bag-shopping text-xl"></i><span class="absolute -top-2 -right-2 bg-indigo-600 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">4</span></a>
+                <a href="#" class="hover:text-indigo-600"><i class="fa-regular fa-user text-xl"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-20 px-4">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 mb-10 md:mb-0 text-center md:text-left">
+                <span class="bg-indigo-400 bg-opacity-40 text-indigo-100 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">New Arrival</span>
+                <h1 class="text-4xl md:text-6xl font-extrabold mt-4 mb-6 leading-tight">Discover Your Style with Ease</h1>
+                <p class="text-indigo-100 mb-8 text-lg">Shop the latest trends in fashion, electronics, and accessories with unbeatable prices.</p>
+                <a href="#shop" class="bg-white text-indigo-600 font-bold px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition duration-300">Shop Now</a>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=600" alt="Hero Shopping" class="rounded-2xl shadow-2xl w-3/4 md:w-full object-cover">
             </div>
         </div>
     </header>
 
-    <!-- Main Content Area -->
-    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
-        
-        <!-- Hero Section -->
-        <div class="text-center max-w-3xl mx-auto mb-12">
-            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-purple-950/60 border border-purple-500/30 text-purple-300 text-xs font-semibold mb-6">
-                <i class="fa-solid fa-bolt text-purple-400"></i>
-                <span>AI-Powered Viral Video Repurposing</span>
+    <!-- Categories Section -->
+    <section class="py-12 container mx-auto px-4">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Shop By Category</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <!-- Category 1 -->
+            <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition text-center cursor-pointer group">
+                <div class="bg-indigo-50 text-indigo-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-indigo-600 group-hover:text-white transition">
+                    <i class="fa-solid fa-shirt text-2xl"></i>
+                </div>
+                <h3 class="font-semibold text-gray-700">Fashion</h3>
             </div>
-            <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight mb-6">
-                Turn Long YouTube Videos Into <span class="bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">Viral Shorts</span>
-            </h1>
-            <p class="text-gray-400 text-lg mb-8">
-                Drop your YouTube link below. Our advanced AI analyzes your video and instantly generates 5 high-converting 15s & 30s clips in 9:16 and 16:9 ratios.
-            </p>
+            <!-- Category 2 -->
+            <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition text-center cursor-pointer group">
+                <div class="bg-indigo-50 text-indigo-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-indigo-600 group-hover:text-white transition">
+                    <i class="fa-solid fa-laptop text-2xl"></i>
+                </div>
+                <h3 class="font-semibold text-gray-700">Electronics</h3>
+            </div>
+            <!-- Category 3 -->
+            <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition text-center cursor-pointer group">
+                <div class="bg-indigo-50 text-indigo-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-indigo-600 group-hover:text-white transition">
+                    <i class="fa-solid fa-couch text-2xl"></i>
+                </div>
+                <h3 class="font-semibold text-gray-700">Home Decor</h3>
+            </div>
+            <!-- Category 4 -->
+            <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition text-center cursor-pointer group">
+                <div class="bg-indigo-50 text-indigo-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-indigo-600 group-hover:text-white transition">
+                    <i class="fa-solid fa-pump-soap text-2xl"></i>
+                </div>
+                <h3 class="font-semibold text-gray-700">Beauty</h3>
+            </div>
         </div>
+    </section>
 
-        <!-- URL Input Card -->
-        <div class="max-w-3xl mx-auto bg-cardDark border border-purple-900/40 p-6 sm:p-8 rounded-3xl glow-effect mb-16">
-            <div class="space-y-6">
-                <div>
-                    <label class="block text-sm font-medium text-gray-300 mb-2">YouTube Video URL</label>
-                    <div class="relative flex items-center">
-                        <i class="fa-brands fa-youtube text-red-500 absolute left-4 text-xl"></i>
-                        <input type="url" id="youtube-url" placeholder="https://www.youtube.com/watch?v=..." class="w-full bg-dark border border-purple-900/50 rounded-2xl py-4 pl-12 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition">
+    <!-- Featured Products Section -->
+    <section id="shop" class="py-12 container mx-auto px-4">
+        <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center">Featured Products</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            
+            <!-- Product Card 1 -->
+            <div class="bg-white rounded-xl shadow overflow-hidden hover:shadow-lg transition">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&q=80&w=400" alt="Product" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <span class="text-xs text-gray-400 uppercase">Fashion</span>
+                    <h3 class="font-bold text-gray-800 mt-1">Casual Summer T-Shirt</h3>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-indigo-600 font-bold">$29.99</span>
+                        <button class="bg-indigo-600 text-white px-3 py-1.5 rounded-lg text-sm hover:bg-indigo-700 transition">Add to Cart</button>
                     </div>
                 </div>
+            </div>
 
-                <!-- Customization Options -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-300 mb-2">Clip Duration</label>
-                        <select id="clip-duration" class="w-full bg-dark border border-purple-900/50 rounded-xl py-3 px-4 text-white focus:outline-none focus:border-purple-500 transition">
-                            <option value="mix">Mixed (15s & 30s)</option>
-                            <option value="15s">15 Seconds</option>
-                            <option value="30s">30 Seconds</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-300 mb-2">Aspect Ratio</label>
-                        <select id="clip-ratio" class="w-full bg-dark border border-purple-900/50 rounded-xl py-3 px-4 text-white focus:outline-none focus:border-purple-500 transition">
-                            <option value="9:16">9:16 (Vertical / Reels / TikTok)</option>
-                            <option value="16:9">16:9 (Landscape / YouTube)</option>
-                        </select>
+            <!-- Product Card 2 -->
+            <div class="bg-white rounded-xl shadow overflow-hidden hover:shadow-lg transition">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=400" alt="Product" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <span class="text-xs text-gray-400 uppercase">Electronics</span>
+                    <h3 class="font-bold text-gray-800 mt-1">Wireless Headphones</h3>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-indigo-600 font-bold">$89.99</span>
+                        <button class="bg-indigo-600 text-white px-3 py-1.5 rounded-lg text-sm hover:bg-indigo-700 transition">Add to Cart</button>
                     </div>
                 </div>
-
-                <button onclick="generateClips()" class="w-full py-4 rounded-2xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold text-lg glow-button hover:opacity-95 transition flex items-center justify-center space-x-2">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i>
-                    <span>Generate 5 AI Clips</span>
-                </button>
             </div>
-        </div>
 
-        <!-- Processing Loader State (Hidden by default) -->
-        <div id="loader-section" class="hidden text-center max-w-xl mx-auto py-12">
-            <div class="relative w-20 h-20 mx-auto mb-6">
-                <div class="absolute inset-0 rounded-full border-4 border-purple-900 animate-pulse"></div>
-                <div class="absolute inset-0 rounded-full border-4 border-purple-500 border-t-transparent animate-spin"></div>
-                <div class="absolute inset-0 flex items-center justify-center text-purple-400 font-bold text-xl">AI</div>
-            </div>
-            <h3 id="loader-status" class="text-xl font-bold text-white mb-2">Analyzing video transcript...</h3>
-            <p class="text-gray-400 text-sm">Finding high-engagement moments and formatting into 5 perfect clips.</p>
-        </div>
-
-        <!-- Results Dashboard Section (Hidden by default) -->
-        <div id="results-section" class="hidden">
-            <div class="flex items-center justify-between mb-8">
-                <div>
-                    <h2 class="text-2xl font-bold text-white">Your AI Generated Clips</h2>
-                    <p class="text-gray-400 text-sm">Successfully extracted 5 viral-ready clips from your video link.</p>
+            <!-- Product Card 3 -->
+            <div class="bg-white rounded-xl shadow overflow-hidden hover:shadow-lg transition">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=400" alt="Product" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <span class="text-xs text-gray-400 uppercase">Footwear</span>
+                    <h3 class="font-bold text-gray-800 mt-1">Sport Running Shoes</h3>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-indigo-600 font-bold">$59.99</span>
+                        <button class="bg-indigo-600 text-white px-3 py-1.5 rounded-lg text-sm hover:bg-indigo-700 transition">Add to Cart</button>
+                    </div>
                 </div>
-                <button onclick="resetGenerator()" class="px-4 py-2 rounded-xl bg-dark border border-purple-900/50 text-gray-300 hover:text-white text-sm transition">
-                    <i class="fa-solid fa-rotate-left mr-2"></i>Generate Another
-                </button>
             </div>
 
-            <!-- 5 Clips Grid -->
-            <div id="clips-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Dynamically populated via JavaScript -->
+            <!-- Product Card 4 -->
+            <div class="bg-white rounded-xl shadow overflow-hidden hover:shadow-lg transition">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=400" alt="Product" class="url w-full h-48 object-cover">
+                <div class="p-4">
+                    <span class="text-xs text-gray-400 uppercase">Accessories</span>
+                    <h3 class="font-bold text-gray-800 mt-1">Minimalist Watch</h3>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-indigo-600 font-bold">$120.00</span>
+                        <button class="bg-indigo-600 text-white px-3 py-1.5 rounded-lg text-sm hover:bg-indigo-700 transition">Add to Cart</button>
+                    </div>
+                </div>
             </div>
+
         </div>
-
-    </main>
+    </section>
 
     <!-- Footer -->
-    <footer class="border-t border-purple-900/30 bg-dark py-8 text-center text-gray-500 text-sm">
-        <p>&copy; 2026 yt clipper.ai. All rights reserved.</p>
+    <footer class="bg-gray-900 text-gray-300 py-10 mt-12">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-white text-lg font-bold mb-4">ShopEase</h3>
+                <p class="text-sm text-gray-400">Your trusted destination for modern lifestyle and tech products. Quality guaranteed.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-white">Home</a></li>
+                    <li><a href="#shop" class="hover:text-white">Shop</a></li>
+                    <li><a href="#" class="hover:text-white">About Us</a></li>
+                    <li><a href="#" class="hover:text-white">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4">Customer Care</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-white">Track Order</a></li>
+                    <li><a href="#" class="help">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white">Returns & Refunds</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4">Stay Connected</h4>
+                <p class="text-sm text-gray-400 mb-4">Subscribe to get special offers and once-in-a-lifetime deals.</p>
+                <div class="flex">
+                    <input type="email" placeholder="Your email" class="px-4 py-2 text-sm rounded-l-lg bg-gray-800 text-white focus:outline-none w-full">
+                    <button class="bg-indigo-600 px-4 py-2 text-sm rounded-r-lg hover:bg-indigo-700 text-white">Join</button>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 mt-8 pt-6 text-center text-xs text-gray-500">
+            &copy; 2026 ShopEase. All rights reserved.
+        </div>
     </footer>
 
-    <!-- Working Video Preview Modal -->
-    <div id="video-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-cardDark border border-purple-900/50 max-w-2xl w-full p-6 rounded-3xl relative glow-effect">
-            <button onclick="closeVideoModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl z-10">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <h3 id="modal-clip-title" class="text-xl font-bold text-white mb-4">Clip Preview</h3>
-            <div class="w-full aspect-video bg-dark rounded-2xl flex items-center justify-center border border-purple-900/50 overflow-hidden relative">
-                <iframe id="modal-youtube-iframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="flex justify-between items-center mt-6">
-                <span id="modal-clip-info" class="text-xs text-purple-400 font-semibold bg-purple-950 px-3 py-1 rounded-lg border border-purple-800/50">Duration: 15s | Ratio: 9:16</span>
-                <a id="modal-download-btn" href="#" target="_blank" class="px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold glow-button transition inline-flex items-center space-x-1.5">
-                    <i class="fa-solid fa-download"></i>
-                    <span>Download Clip (MP4)</span>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Auth Modal -->
-    <div id="auth-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-cardDark border border-purple-900/50 max-w-md w-full p-8 rounded-3xl relative glow-effect">
-            <button onclick="closeAuthModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white text-lg">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <h3 id="auth-modal-title" class="text-2xl font-bold text-white mb-6">Sign In to yt clipper.ai</h3>
-            <form onsubmit="handleAuthSubmit(event)" class="space-y-4">
-                <div id="name-field-container" class="hidden">
-                    <label class="block text-sm font-medium text-gray-300 mb-1">Full Name</label>
-                    <input type="text" id="auth-name" placeholder="John Doe" class="w-full bg-dark border border-purple-900/50 rounded-xl py-3 px-4 text-white focus:outline-none focus:border-purple-500">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-300 mb-1">Email Address</label>
-                    <input type="email" id="auth-email" required placeholder="you@example.com" class="w-full bg-dark border border-purple-900/50 rounded-xl py-3 px-4 text-white focus:outline-none focus:border-purple-500">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-300 mb-1">Password</label>
-                    <input type="password" id="auth-password" required placeholder="••••••••" class="w-full bg-dark border border-purple-900/50 rounded-xl py-3 px-4 text-white focus:outline-none focus:border-purple-500">
-                </div>
-                <button type="submit" id="auth-submit-btn" class="w-full py-3.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold glow-button transition mt-2">Sign In</button>
-            </form>
-            <div class="mt-6 text-center text-sm text-gray-400">
-                <span id="auth-toggle-text">Don't have an account?</span> 
-                <button onclick="toggleAuthMode()" id="auth-toggle-btn" class="text-purple-400 font-semibold hover:underline ml-1">Create Account</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- JavaScript Logic -->
-    <script>
-        let isRegisterMode = false;
-        let currentUser = null;
-        let currentEmbedId = "dQw4w9WgXcQ"; // Default fallback ID
-
-        function openAuthModal(mode) {
-            const modal = document.getElementById('auth-modal');
-            modal.classList.remove('hidden');
-            if (mode === 'register') {
-                setRegisterMode(true);
-            } else {
-                setRegisterMode(false);
-            }
-        }
-
-        function closeAuthModal() {
-            document.getElementById('auth-modal').classList.add('hidden');
-        }
-
-        function toggleAuthMode() {
-            setRegisterMode(!isRegisterMode);
-        }
-
-        function setRegisterMode(register) {
-            isRegisterMode = register;
-            const title = document.getElementById('auth-modal-title');
-            const nameContainer = document.getElementById('name-field-container');
-            const submitBtn = document.getElementById('auth-submit-btn');
-            const toggleText = document.getElementById('auth-toggle-text');
-            const toggleBtn = document.getElementById('auth-toggle-btn');
-
-            if (isRegisterMode) {
-                title.innerText = "Create Account";
-                nameContainer.classList.remove('hidden');
-                submitBtn.innerText = "Sign Up";
-                toggleText.innerText = "Already have an account?";
-                toggleBtn.innerText = "Sign In";
-            } else {
-                title.innerText = "Sign In to yt clipper.ai";
-                nameContainer.classList.add('hidden');
-                submitBtn.innerText = "Sign In";
-                toggleText.innerText = "Don't have an account?";
-                toggleBtn.innerText = "Create Account";
-            }
-        }
-
-        function handleAuthSubmit(e) {
-            e.preventDefault();
-            const email = document.getElementById('auth-email').value;
-            currentUser = email;
-            
-            const navAuthArea = document.getElementById('nav-auth-area');
-            navAuthArea.innerHTML = `
-                <div class="flex items-center space-x-3 bg-cardDark border border-purple-900/50 py-1.5 px-4 rounded-xl">
-                    <div class="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold text-sm">
-                        ${email.charAt(0).toUpperCase()}
-                    </div>
-                    <span class="text-sm font-medium text-gray-200 hidden sm:inline">${email}</span>
-                    <button onclick="logout()" class="text-gray-400 hover:text-red-400 ml-2" title="Logout"><i class="fa-solid fa-right-from-bracket"></i></button>
-                </div>
-            `;
-            closeAuthModal();
-        }
-
-        function logout() {
-            currentUser = null;
-            const navAuthArea = document.getElementById('nav-auth-area');
-            navAuthArea.innerHTML = `
-                <button onclick="openAuthModal('login')" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white transition">Sign In</button>
-                <button onclick="openAuthModal('register')" class="px-5 py-2.5 rounded-xl text-sm font-semibold bg-purple-600 hover:bg-purple-500 text-white glow-button transition">Get Started</button>
-            `;
-        }
-
-        function extractYouTubeID(url) {
-            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-            const match = url.match(regExp);
-            return (match && match[2].length === 11) ? match[2] : null;
-        }
-
-        function generateClips() {
-            const urlInput = document.getElementById('youtube-url').value;
-            if (!urlInput) {
-                alert("Please enter a valid YouTube video URL!");
-                return;
-            }
-
-            const videoId = extractYouTubeID(urlInput);
-            if (videoId) {
-                currentEmbedId = videoId;
-            }
-
-            document.querySelector('.max-w-3xl.mx-auto.bg-cardDark').classList.add('hidden');
-            const loader = document.getElementById('loader-section');
-            loader.classList.remove('hidden');
-
-            const statuses = [
-                "Fetching video metadata & transcript...",
-                "AI analyzing high-engagement moments...",
-                "Extracting top 5 viral highlights...",
-                "Rendering 15s/30s clips in 9:16 & 16:9..."
-            ];
-
-            let step = 0;
-            const statusText = document.getElementById('loader-status');
-            
-            const interval = setInterval(() => {
-                step++;
-                if (step < statuses.length) {
-                    statusText.innerText = statuses[step];
-                } else {
-                    clearInterval(interval);
-                    loader.classList.add('hidden');
-                    renderResults();
-                }
-            }, 1000);
-        }
-
-        function renderResults() {
-            const resultsSection = document.getElementById('results-section');
-            resultsSection.classList.remove('hidden');
-
-            const clipsData = [
-                { id: 1, title: "Highlight 1: The Ultimate Hook", duration: "15s", ratio: "9:16", score: "98%" },
-                { id: 2, title: "Highlight 2: Core Statement", duration: "30s", ratio: "9:16", score: "95%" },
-                { id: 3, title: "Highlight 3: Key Explanation", duration: "15s", ratio: "16:9", score: "92%" },
-                { id: 4, title: "Highlight 4: Climax Moment", duration: "30s", ratio: "9:16", score: "90%" },
-                { id: 5, title: "Highlight 5: Outro & Summary", duration: "15s", ratio: "16:9", score: "88%" }
-            ];
-
-            const container = document.getElementById('clips-container');
-            container.innerHTML = "";
-
-            clipsData.forEach(clip => {
-                container.innerHTML += `
-                    <div class="bg-cardDark border border-purple-900/40 rounded-2xl p-5 flex flex-col justify-between hover:border-purple-500/50 transition">
-                        <div>
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="px-3 py-1 rounded-full bg-purple-950 text-purple-300 text-xs font-semibold border border-purple-800/50">Viral Score: ${clip.score}</span>
-                                <div class="space-x-1">
-                                    <span class="text-xs bg-dark text-gray-300 px-2.5 py-1 rounded-lg border border-purple-900/30">${clip.duration}</span>
-                                    <span class="text-xs bg-dark text-purple-400 px-2.5 py-1 rounded-lg border border-purple-900/30 font-semibold">${clip.ratio}</span>
-                                </div>
-                            </div>
-                            <div onclick="playClip('${clip.title}', '${clip.duration}', '${clip.ratio}')" class="w-full h-40 bg-dark rounded-xl mb-4 flex items-center justify-center border border-purple-900/30 relative overflow-hidden group cursor-pointer">
-                                <div class="absolute inset-0 bg-purple-950/20 group-hover:bg-purple-950/40 transition"></div>
-                                <div class="w-12 h-12 rounded-full bg-purple-600/80 flex items-center justify-center text-white text-lg group-hover:scale-110 glow-button transition z-10">
-                                    <i class="fa-solid fa-play ml-0.5"></i>
-                                </div>
-                                <div class="absolute bottom-2 right-2 bg-black/70 px-2 py-0.5 rounded text-[10px] text-gray-300 z-10">${clip.duration}</div>
-                            </div>
-                            <h4 class="text-white font-semibold mb-2">${clip.title}</h4>
-                        </div>
-                        <div class="flex space-x-2 mt-4">
-                            <button onclick="downloadClip('${clip.title}')" class="flex-1 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold flex items-center justify-center space-x-1.5 transition">
-                                <i class="fa-solid fa-download"></i>
-                                <span>Download</span>
-                            </button>
-                            <button onclick="playClip('${clip.title}', '${clip.duration}', '${clip.ratio}')" class="px-3 py-2.5 rounded-xl bg-dark border border-purple-900/50 text-gray-300 hover:text-white text-xs transition" title="Play Clip">
-                                <i class="fa-solid fa-play"></i>
-                            </button>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        function playClip(title, duration, ratio) {
-            document.getElementById('modal-clip-title').innerText = title;
-            document.getElementById('modal-clip-info').innerText = `Duration: ${duration} | Ratio: ${ratio}`;
-            document.getElementById('modal-youtube-iframe').src = `https://www.youtube.com/embed/${currentEmbedId}?autoplay=1`;
-            document.getElementById('modal-download-btn').href = `https://www.y2mate.com/youtube/${currentEmbedId}`;
-            document.getElementById('video-modal').classList.remove('hidden');
-        }
-
-        function closeVideoModal() {
-            document.getElementById('video-modal').classList.add('hidden');
-            document.getElementById('modal-youtube-iframe').src = "";
-        }
-
-        function downloadClip(title) {
-            alert(`Preparing download for "${title}"...\nRedirecting to secure downloader.`);
-            window.open(`https://www.y2mate.com/youtube/${currentEmbedId}`, '_blank');
-        }
-
-        function resetGenerator() {
-            document.getElementById('results-section').classList.add('hidden');
-            document.querySelector('.max-w-3xl.mx-auto.bg-cardDark').classList.remove('hidden');
-            document.getElementById('youtube-url').value = "";
-        }
-    </script>
 </body>
 </html>
